@@ -2,9 +2,8 @@ from random import random, uniform
 from fish import Fish
 
 class fishSwarm:
-
     def objectiveFunction(self, x): 
-        return x**2
+        return -x**2 + 30*x -10 
 
     def __init__(self, step, visual, trynumber, fatorLotacao, fishQtd, iteracoes) :
         self.fishs = []
@@ -79,11 +78,13 @@ class fishSwarm:
                 aux = self.evaluate(self.fishs[i]) # decide qual o movimento apropriado a ser feito para o peixe atual
                 self.fishs[i].updateRepresentation(aux)
         
+        
+        print("")
         print("soluções encontradas.")
         for i in range(self.fishQtd):
             print(self.fishs[i].getRepresentation())
         print("")
 
 #step, visual, trynumber, fatorLotacao, fishQtd, iteracoes
-fs = fishSwarm(0.1, 3, 10,0.8,5, 1000 )
+fs = fishSwarm(0.3, 5, 10, 0.7, 10, 1000 )
 fs.execute()
