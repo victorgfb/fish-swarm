@@ -86,5 +86,5 @@ class fishSwarm:
         print("")
 
 #step, visual, trynumber, fatorLotacao, fishQtd, iteracoes
-fs = fishSwarm(0.3, 5, 10, 0.7, 10, 1000 )
+fs = fishSwarm(0.3, 5, 10, 0.7, 10, 2000 )
 fs.execute()
