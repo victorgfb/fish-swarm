@@ -73,9 +73,9 @@ class fishSwarm:
 
     def execute(self):
 
-        for _ in range(self.iteracoes): #enquanto o número de ciclos de teste não for excedido
-            for i in range(self.fishQtd): # percorre cada possível solução
-                aux = self.evaluate(self.fishs[i]) # decide qual o movimento apropriado a ser feito para o peixe atual
+        for _ in range(self.iteracoes):
+            for i in range(self.fishQtd): 
+                aux = self.evaluate(self.fishs[i])
                 self.fishs[i].updateRepresentation(aux)
         
         
