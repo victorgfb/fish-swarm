@@ -22,10 +22,6 @@ class fishSwarm:
         for fish in self.fishs:
             print(fish.getRepresentation())
 
-
-    def update(self, Xi, Xj):
-        return Xi + (((Xj - Xi)/ abs(Xj - Xi)) * self.step * random())
-
     def evaluate(self, currentFish): 
         Xmax = self.fishs[0].getRepresentation() 
         summation = 0 
@@ -37,7 +33,7 @@ class fishSwarm:
             if abs(Xj- Xi) < self.visual: #verifica vizinhança
                 nf += 1
                 summation += fish.getRepresentation()
-                if Xj > Xmax:
+                if self.objectiveFunction(Xj) > self.objectiveFunction(Xmax):
                     Xmax = Xj
 
         Ymax = self.objectiveFunction(Xmax)
@@ -65,6 +61,9 @@ class fishSwarm:
                 return self.update(Xi,Xj) 
         return self.leap(Xi) 
 
+    def update(self, Xi, Xj):
+        return Xi + (((Xj - Xi)/ abs(Xj - Xi)) * self.step * random())
+
     def follow(self, Xi, Xmax):
        return self.update(Xi, Xmax) 
   
@@ -78,13 +77,12 @@ class fishSwarm:
                 aux = self.evaluate(self.fishs[i])
                 self.fishs[i].updateRepresentation(aux)
         
-        
         print("")
         print("soluções encontradas.")
         for i in range(self.fishQtd):
             print(self.fishs[i].getRepresentation())
         print("")
 
-#step, visual, trynumber, fatorLotacao, fishQtd, iteracoes
-fs = fishSwarm(0.3, 5, 10, 0.7, 10, 2000 )
+#step, visual, trynumber, fatorLotacao, fishQtd (N), iteracoes
+fs = fishSwarm(0.5, 5, 7, 0.7, 10, 2000 )
 fs.execute()
